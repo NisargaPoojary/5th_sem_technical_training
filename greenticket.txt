@@ -1,0 +1,25 @@
+package greenTicket;
+import java.util.Scanner;
+public class greenTicket {
+public static void main(String args[]) {
+	Scanner scan =new Scanner(System.in);
+	System.out.println("Enter a:");
+	int a=scan.nextInt();
+	System.out.println("Enter b:");
+	int b=scan.nextInt();
+	System.out.println("Enter c:");
+	int c=scan.nextInt();
+	System.out.println(gticket(a,b,c));
+}
+static int gticket(int a,int b,int c) {
+	if(a==b&& b==c) {
+		return 20;
+	}
+	if(a==b || b==c || a==c) {
+		return 10;
+	}
+	else {
+		return 0;
+	}
+}
+}
