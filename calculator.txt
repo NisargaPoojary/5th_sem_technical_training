@@ -1,0 +1,33 @@
+package Calculator;
+import java.util.Scanner;
+public class Calculator {
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter your choice\n1.Addition\n2.subtraction\n3.multiplication\n4.division\n5.exit");
+			int ch=sc.nextInt();
+			
+			System.out.println("Enter any two numbers for calculation");
+			int a=sc.nextInt();
+			int b=sc.nextInt();
+			
+				switch(ch)
+				{
+				case 1: System.out.println("Sum of numbers:"+(a+b));
+				break;
+				case 2:System.out.println("Difference of given numbers:"+(a-b));
+				break;
+				case 3: System.out.println("Multiplicatuion of given numbers: "+(a*b));
+				break ;
+				case 4:System.out.println("Division of given number "+(a/b));
+				break;
+				case 5:System.out.println("Exit from the loop press 5");
+				break;
+				default:
+				System.out.println("Invalid choice");
+				
+				}
+			sc.close();
+		}
+}
+
