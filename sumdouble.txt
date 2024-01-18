@@ -1,0 +1,23 @@
+package sumdouble;
+import java.util.Scanner;
+
+public class sumdouble {
+	static int sumDouble(int a,int b) {
+		if(a==b) {
+			return 2*(a+b);
+		}
+		else  {
+			return a+b;
+		}
+	}
+	public static void main(String[] args) {
+		Scanner scan =new Scanner(System.in);
+		System.out.println("Enter a :");
+		int a=scan.nextInt();
+		System.out.println("Enter b:");
+		int b=scan.nextInt();
+		System.out.println(sumDouble(a,b));
+		scan.close();
+		
+	}
+}
