@@ -1,0 +1,28 @@
+package makes10;
+import java.util.Scanner;
+public class makes10 {
+static boolean Makes10(int a,int b) {
+	if (a==10 || b==10) {
+		return true;
+	}
+	else if(a+b==10) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+	public static void main(String[] args) {
+		Scanner scan =new Scanner(System.in);
+		System.out.println("Enter a :");
+		int a=scan.nextInt();
+		System.out.println("Enter b:");
+		int b=scan.nextInt();
+		System.out.println(Makes10(a,b));
+		scan.close();
+		
+	
+
+	}
+
+}
