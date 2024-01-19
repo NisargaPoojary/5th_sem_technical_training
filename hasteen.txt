@@ -1,0 +1,25 @@
+package hasteen;
+import java.util.Scanner;
+public class hasteen {
+	static boolean hasTeen(int a,int b,int c)
+	{
+		if (a>=13 && a<=19)
+			return true;
+		if (b>=13 && b<=19)
+			return true;
+		if (c>=13 && c<=19)
+			return true;
+		else
+			return false;
+	}
+	public static void main(String[] args)
+	{
+	Scanner scan=new Scanner(System.in);
+	int a,b,c;
+	a=scan.nextInt();
+	b=scan.nextInt();
+	c=scan.nextInt();
+	System.out.println(hasTeen(a,b,c));
+	scan.close();
+	}
+}
