@@ -1,0 +1,13 @@
+package sleepin;
+import java.util.Scanner;
+public class sleepin {
+	static boolean sleepin(boolean weekday, boolean vacation)
+	{
+	return !weekday||vacation;
+	}
+	public static void main(String[] args) {
+	boolean w=true, v=false;
+	boolean x=sleepin(w,v);
+	System.out.println(x);
+	}
+}
