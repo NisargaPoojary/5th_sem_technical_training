@@ -1,0 +1,18 @@
+package or35;
+import java.util.Scanner;
+public class or35 {
+	static boolean or35(int x,int y)
+	{
+	boolean r=((x%3==0)||(y%5==0))?(true):(false);
+	return r;
+	}
+	public static void main(String[] args)
+	{
+	Scanner s=new Scanner(System.in);
+	int x,y;
+	x=s.nextInt();
+	y=s.nextInt();
+	boolean b=or35(x,y);
+	System.out.println(b);
+	}
+}
