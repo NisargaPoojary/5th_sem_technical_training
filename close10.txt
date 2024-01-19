@@ -1,0 +1,20 @@
+package close10;
+import java.util.Scanner;
+public class close10 {
+	static int Close10(int x,int y)
+	{
+	int first_diff=Math.abs(x-10);
+	int second_diff=Math.abs(y-10);
+	int r=(first_diff<second_diff)?(first_diff):((first_diff>second_diff)?(second_diff):(0));
+	return r;
+	}
+	public static void main(String[] args)
+	{
+	Scanner s=new Scanner(System.in);
+	int x,y;
+	x=s.nextInt();
+	y=s.nextInt();
+	int b=Close10(x,y);
+	System.out.println(b);
+	}
+}
