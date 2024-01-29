@@ -1,0 +1,36 @@
+package Sumprime;
+import java.util.Scanner;
+public class Sumprime {
+	
+		 static boolean isPrime(int num) {
+		        if (num <= 1) {
+		            return false;
+		        }
+		        for (int i = 2; i <= Math.sqrt(num); i++) {
+		            if (num % i == 0) {
+		                return false;
+		            }
+		        }
+		        return true;
+		    }
+
+		    static boolean SumPrime(int a, int b) {
+		        if (isPrime(a) && isPrime(b)) {
+		            int sum = a + b;
+		            return isPrime(sum);
+		        } else {
+		            return false;
+		        }
+		    }
+	    public static void main(String[] args) {
+	    	Scanner scan=new Scanner(System.in);
+	    	System.out.println("Enter a:");
+	    	int a=scan.nextInt();
+	    	System.out.println("Enter b:");
+	    	int b=scan.nextInt();
+	        System.out.println(SumPrime(a,b));   
+	        scan.close();
+	    }
+
+	   
+}
