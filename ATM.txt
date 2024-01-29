@@ -1,0 +1,84 @@
+package ATM;
+import java.util.Scanner;
+public class ATM {
+	 static double deposit(double balance, double amount) {
+	        return balance + amount;
+	    }
+
+	    static double withdraw(double balance, double amount) {
+	        if (amount <= balance) {
+	            return balance - amount;
+	        } else {
+	            System.out.println("Insufficient funds. Withdrawal failed.");
+	            return balance;
+	        }
+	    }
+
+	    static int changePin(int newPin) {
+	        System.out.println("PIN has been changed successfully.");
+	        return newPin;
+	    }
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+
+	        int Pin = 1234;
+	        int accountPin;
+	        double balance = 0;
+	        while (true) {
+	            System.out.println("Enter your PIN: ");
+	            accountPin = scan.nextInt();
+
+	            if (accountPin == Pin) {
+	                int choice;
+	                do {
+	                    // Display menu options
+	                    System.out.println("\nEnter your choice:");
+	                    System.out.println("1. Deposit");
+	                    System.out.println("2. Withdraw");
+	                    System.out.println("3. Balance enquiry");
+	                    System.out.println("4. PIN change");
+	                    System.out.println("5. Exit");
+	                    System.out.println("Enter your choice: ");
+
+	                    choice = scan.nextInt();
+
+	                    switch (choice) {
+	                        case 1:
+	                            System.out.println("Enter the amount to deposit: ");
+	                            double depositAmount = scan.nextDouble();
+	                            balance = deposit(balance, depositAmount);
+	                            System.out.println("Transaction(1) : input: " + depositAmount + " output: " + balance);
+	                            break;
+	                        case 2:
+	                            System.out.println("Enter the amount to withdraw: ");
+	                            double withdrawAmount = scan.nextDouble();
+	                            balance = withdraw(balance, withdrawAmount);
+	                            System.out.println("Transaction(2) : input: " + withdrawAmount + " output: " + balance);
+	                            break;
+	                        case 3:
+	                            System.out.println("Your current balance is: " + balance);
+	                            break;
+	                        case 4:
+	                            System.out.println("Enter the new PIN: ");
+	                            int newPin = scan.nextInt();
+	                            Pin = changePin(newPin);
+	                            System.out.println("PIN Change successful!");
+	                            break;
+	                        case 5:
+	                            System.exit(0);
+	                            break;
+	                        default:
+	                            System.out.println("Invalid choice. Please try again.");
+	                    }
+	                } while (choice != 5);
+	            } else {
+	                System.out.println("Incorrect PIN. Please try again.");
+	            }
+	            scan.close();
+	        }
+	    }
+
+	   
+}
+
+
