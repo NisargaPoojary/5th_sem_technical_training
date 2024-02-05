@@ -1,0 +1,17 @@
+package Integertobinary;
+import java.util.Scanner;
+public class Integertobinary {
+	 static String getBinaryNum(int x) {
+	        return Integer.toBinaryString(x);
+	    }
+		
+	public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int x = scan.nextInt();
+        String binaryRepresentation = getBinaryNum(x);
+        System.out.println(binaryRepresentation);
+        scan.close();
+	}
+
+   
+}
