@@ -1,0 +1,62 @@
+package FibPrime1;
+import java.util.Scanner;
+
+public class FibPrime1 {
+    
+    private static boolean Prime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static int NearestFibonacci(int x) {
+        int a = 0, b = 1;
+        while (b < x) {
+            int temp = b;
+            b = a + b;
+            a = temp;
+        }
+        return (Math.abs(x - a) < Math.abs(x - b)) ? a : b;
+    }
+
+    private static int FibonacciPrime(int n) {
+        int nextFib = n + 1;
+        while (true) {
+            if (Fibonacci(nextFib) && Prime(nextFib)) {
+                return nextFib;
+            }
+            nextFib++;
+        }
+    }
+
+    private static boolean Fibonacci(int n) {
+        int a = 0, b = 1;
+        while (b < n) {
+            int temp = b;
+            b = a + b;
+            a = temp;
+        }
+        return n == b;
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int x = scan.nextInt();
+        int fibonacci = NearestFibonacci(x);
+        if (fibonacci == x) {
+            if (Prime(x)) {
+                System.out.println(x);
+            } else {
+                int nextFibPrime = FibonacciPrime(x);
+                System.out.println( nextFibPrime);
+            }
+        } else {
+            System.out.println( fibonacci);
+        }
+        scan.close();
+    }
+}
