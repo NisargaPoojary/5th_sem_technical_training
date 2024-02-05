@@ -1,0 +1,57 @@
+package fibprime;
+import java.util.Scanner;
+public class fibprime {
+	static boolean Prime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+   static boolean Fibonacci(int n) {
+        if (n == 0 || n == 1) {
+            return true;
+        }
+
+        int a = 0;
+        int b = 1;
+        int c;
+
+        while (b <= n) {
+            if (b == n) {
+                return true;
+            }
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return false;
+    }
+
+   private static void FibPrime(int X, int Y) {
+        boolean found = false;
+        for (int i = X; i <= Y; i++) {
+            if (Fibonacci(i) && Prime(i)) {
+                System.out.print(i + " ");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.print(0);
+        }
+        }
+    
+	    public static void main(String[] args) {
+	    	Scanner scan=new Scanner(System.in);
+		    int x=scan.nextInt();
+		    int y=scan.nextInt();
+		    FibPrime(x,y);
+		    scan.close();
+	    }
+	     
+}
