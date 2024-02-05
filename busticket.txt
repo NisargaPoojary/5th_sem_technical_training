@@ -1,0 +1,49 @@
+package ticket;
+import java.util.Scanner;
+public class ticket {
+	public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the stage number (From):");
+        int fromStage = scan.nextInt();
+
+        System.out.println("Enter the stage number (To):");
+        int toStage = scan.nextInt();
+
+        System.out.println("Enter the number of adult passengers:");
+        int adultPassengers = scan.nextInt();
+
+        System.out.println("Enter the number of children passengers:");
+        int childrenPassengers = scan.nextInt();
+
+        int numStages = Math.abs(toStage - fromStage);
+
+        double adultCost = adultPassengers * 10 * numStages;
+        double childCost = childrenPassengers * 5 * numStages;
+        double totalTicketCost = adultCost + childCost;
+
+        double discount = 0;
+        if (adultPassengers >= 5) {
+            discount = 0.2;
+        } else if (adultPassengers == 4) {
+            discount = 0.15;
+        } else if (adultPassengers == 3) {
+            discount = 0.1;
+        } else if (adultPassengers == 2) {
+            discount = 0.05;
+        }
+
+        double discountedTicketCost = totalTicketCost - (totalTicketCost * discount);
+
+        double serviceCharge = discountedTicketCost * 0.05;
+        double finalTicketCost = discountedTicketCost + serviceCharge;
+
+        System.out.println("Number of stages: " + numStages);
+        System.out.println("Total Ticket Cost (before discount): Rs." + totalTicketCost);
+        System.out.println("Discount: " + (discount * 100) + "%");
+        System.out.println("Ticket Cost after discount: Rs." + discountedTicketCost);
+        System.out.println("Service Charge: Rs." + serviceCharge);
+        System.out.println("Total Ticket Cost: Rs." + finalTicketCost);
+    }
+
+}
+
