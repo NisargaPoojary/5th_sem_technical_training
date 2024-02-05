@@ -1,0 +1,33 @@
+package primedigitsum;
+import java.util.Scanner;
+public class primedigitsum {
+	private static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean PrimeDigitSumPrime(int X) {
+        int digitSum = 0;
+        while (X > 0) {
+            int digit = X % 10;
+            if (isPrime(digit)) {
+                digitSum += digit;
+            }
+            X /= 10;
+        }
+        return isPrime(digitSum);
+    }
+
+	  public static void main(String[] args) {
+	       Scanner scan=new Scanner(System.in);
+	       int x=scan.nextInt();
+	       System.out.println(PrimeDigitSumPrime(x));
+	       scan.close();
+	  }
+}
