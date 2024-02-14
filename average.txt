@@ -1,0 +1,54 @@
+package average;
+import java.util.Scanner;
+public class average {
+	    public static boolean canSplitForEqualAverage(int[] nums) {
+	        int totalSum = 0;
+	        for (int num : nums) {
+	            totalSum += num;
+	        }
+
+	        if (totalSum % 2 != 0) {
+	            return false;
+	        }
+
+	        int targetSum = totalSum / 2;
+
+	        boolean[][] dp = new boolean[nums.length + 1][targetSum + 1];
+
+	        for (int i = 0; i < dp[0].length; i++) {
+	            dp[0][i] = true;
+	        }
+
+	        for (int i = 1; i < dp.length; i++) {
+	            for (int j = 1; j < dp[i].length; j++) {
+	                if (nums[i - 1] <= j) {
+	                    dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]];
+	                } else {
+	                    dp[i][j] = dp[i - 1][j];
+	                }
+	            }
+	        }
+
+	        return dp[nums.length][targetSum];
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Enter the number of elements: ");
+	        int n = scanner.nextInt();
+
+	        int[] nums = new int[n];
+
+	        System.out.println("Enter the elements of the array: ");
+	        for (int i = 0; i < n; i++) {
+	            nums[i] = scanner.nextInt();
+	        }
+
+	        boolean canSplit = canSplitForEqualAverage(nums);
+
+	        System.out.println(canSplit);
+
+	        scanner.close();
+	    }
+}
