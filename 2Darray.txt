@@ -1,0 +1,56 @@
+package array;
+import java.util.Scanner;
+public class array {
+	    public static int[][] construct2DArray(int[] original, int m, int n) {
+	        int length = original.length;
+
+	        if (m * n != length) {
+	            return new int[0][0];
+	        }
+
+	        int[][] result = new int[m][n];
+	        int index = 0;
+
+	        for (int i = 0; i < m; i++) {
+	            for (int j = 0; j < n; j++) {
+	                result[i][j] = original[index++];
+	            }
+	        }
+
+	        return result;
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+
+	        System.out.print("Enter the size of the array: ");
+	        int size = scan.nextInt();
+	        int[] original = new int[size];
+
+	        System.out.println("Enter the elements of the array:");
+	        for (int i = 0; i < size; i++) {
+	            original[i] = scan.nextInt();
+	        }
+
+	        System.out.print("Enter the number of rows (m): ");
+	        int m = scan.nextInt();
+
+	        System.out.print("Enter the number of columns (n): ");
+	        int n = scan.nextInt();
+
+	        System.out.println("Constructed 2D Array:");
+	        printArray(construct2DArray(original, m, n));
+	        scan.close();
+	    }
+
+	    private static void printArray(int[][] array) {
+	        for (int[] row : array) {
+	            for (int num : row) {
+	                System.out.print(num + " ");
+	            }
+	            System.out.println();
+	        }
+	        System.out.println();
+	    }
+	
+}
