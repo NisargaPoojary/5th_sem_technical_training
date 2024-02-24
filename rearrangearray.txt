@@ -1,0 +1,46 @@
+package rearrangearray;
+import java.util.Scanner;
+
+public class rearrangearray {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int n = scan.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scan.nextInt();
+        }
+
+        rearrangeArray(arr, n);
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        scan.close();
+       
+    }
+    public static void rearrangeArray(int[] arr, int n) {
+        int max = n - 1;
+        int min = 0;
+        int maxElement = arr[max] + 1;
+
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                arr[i] += (arr[max] % maxElement) * maxElement;
+                max--;
+            }
+            else {
+                arr[i] += (arr[min] % maxElement) * maxElement;
+                min++;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            arr[i] = arr[i] / maxElement;
+        }
+    }
+}
