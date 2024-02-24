@@ -1,0 +1,47 @@
+package array;
+import java.util.Scanner;
+public class array {
+	    
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+
+	        System.out.print("Enter the size of the array: ");
+	        int n = scan.nextInt();
+	        int[] arr = new int[n];
+
+	        System.out.println("Enter the elements of the array:");
+	        for (int i = 0; i < n; i++) {
+	            arr[i] = scan.nextInt();
+	        }
+	        int[] result= findTwoElement(n,arr);
+	        for(int i=0;i<2;i++)
+	        System.out.print(result[i]+" ");
+	        scan.close();
+	    }
+	    
+	    public static int[] findTwoElement(int n,int arr[]) {
+	    	int[] result=new int[2];
+	    	
+	    	for (int i = 0; i < n; i++) {
+	            int index = Math.abs(arr[i]) - 1;
+	            if (arr[index] > 0) {
+	                arr[index] = -arr[index];
+	            } else {
+	                result[0] = Math.abs(arr[i]);
+	            }
+	        }
+	    
+	    	for (int i = 0; i < n; i++) {
+	            if (arr[i] > 0) {
+	                result[1] = i + 1; 
+	                break;
+	            }
+	        }
+	    	return result;
+	    	
+    }
+
+
+	   
+	
+}
