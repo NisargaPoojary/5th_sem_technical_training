@@ -1,0 +1,30 @@
+package nonrepeatingcharacter;
+import java.util.Scanner;
+public class nonrepeatingCharacter {
+	    public static char nonrepeatingCharacter(String S) {
+	        int[] frequency = new int[26]; // Assuming only lowercase Latin letters
+	        for (char ch : S.toCharArray()) {
+	            frequency[ch - 'a']++;
+	        }
+	        for (char ch : S.toCharArray()) {
+	            if (frequency[ch - 'a'] == 1) {
+	                return ch;
+	            }
+	        }
+
+	        return '$';
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+
+	        System.out.print("Enter the string: ");
+	        String input = scan.nextLine();
+
+	        char result = nonrepeatingCharacter(input);
+	        System.out.println("Output: " + (result == '$' ? "No non-repeating character" : result));
+	        scan.close();
+	    }
+}
+
+
