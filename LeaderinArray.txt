@@ -1,0 +1,51 @@
+package leaderinarray;
+import java.util.Scanner;
+public class leaderinarray {
+	    public static void main(String[] args) {
+	    	Scanner scan=new Scanner(System.in);
+	    	 System.out.print("Enter the size of the array: ");
+	         int n = scan.nextInt();
+	         int[] arr = new int[n];
+	         System.out.println("Enter the array elements:");
+	         for (int i = 0; i < n; i++) {
+	             arr[i] = scan.nextInt();
+	         }
+	         int[] leaders = findLeaders(arr, n);
+	         
+	         for (int leader : leaders) {
+	             System.out.print(leader + " ");
+	         }
+	         scan.close();
+	     }
+
+	     public static int[] findLeaders(int[] arr, int n) {
+	         int[] result = new int[n];
+	         int count = 0;
+	         int maxRight = arr[n - 1];
+	         result[count++] = maxRight;
+	         for (int i = n - 2; i >= 0; i--) {
+	             if (arr[i] >= maxRight) {
+	                 result[count++] = arr[i];
+	                 maxRight = arr[i];
+	             }
+	         }
+	         int[] trimmedResult = new int[count];
+	         System.arraycopy(result, 0, trimmedResult, 0, count);
+	         reverseArray(trimmedResult);
+
+	         return trimmedResult;
+	     }
+
+	     public static void reverseArray(int[] arr) {
+	         int start = 0;
+	         int end = arr.length - 1;
+
+	         while (start < end) {
+	             int temp = arr[start];
+	             arr[start] = arr[end];
+	             arr[end] = temp;
+	             start++;
+	             end--;
+	         }
+	     }
+	 }
