@@ -1,0 +1,66 @@
+package minswap;
+import java.util.Scanner;
+public class minswap {
+	 public static int minSwaps(int[] nums) {
+	        int n = nums.length;
+	        int[] temp = new int[n];
+	        System.arraycopy(nums, 0, temp, 0, n);
+	        for (int i = 0; i < n - 1; i++) {
+	            for (int j = 0; j < n - i - 1; j++) {
+	                if (temp[j] > temp[j + 1]) {
+	                    int tempValue = temp[j];
+	                    temp[j] = temp[j + 1];
+	                    temp[j + 1] = tempValue;
+	                }
+	            }
+	        }
+
+	        int swaps = 0;
+	        boolean[] visited = new boolean[n];
+
+	        for (int i = 0; i < n; i++) {
+	            if (visited[i] || getIndex(nums, temp[i]) == i) {
+	                continue;
+	            }
+
+	            int cycleSize = 0;
+	            int j = i;
+	            while (!visited[j]) {
+	                visited[j] = true;
+	                j = getIndex(nums, temp[j]);
+	                cycleSize++;
+	            }
+
+	            if (cycleSize > 0) {
+	                swaps += (cycleSize - 1);
+	            }
+	        }
+
+	        return swaps;
+	    }
+
+	    private static int getIndex(int[] nums, int value) {
+	        for (int i = 0; i < nums.length; i++) {
+	            if (nums[i] == value) {
+	                return i;
+	            }
+	        }
+	        return -1;
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Enter the size of the array: ");
+	        int n = scanner.nextInt();
+
+	        int[] nums = new int[n];
+	        System.out.println("Enter the elements of the array:");
+	        for (int i = 0; i < n; i++) {
+	            nums[i] = scanner.nextInt();
+	        }
+
+	        int result = minSwaps(nums);
+	        System.out.println(result);
+	    }
+	}
