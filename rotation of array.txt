@@ -1,0 +1,50 @@
+package rotationOfArray;
+import java.util.Scanner;
+
+public class rotationOfArray {
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+	        System.out.print("Enter the number of elements in the array: ");
+	        int n = scan.nextInt();
+
+	        int[] arr = new int[n];
+	        System.out.println("Enter the array elements:");
+	        for (int i = 0; i < n; i++) {
+	            arr[i] = scan.nextInt();
+	        }
+
+	        System.out.print("Enter the number of rotations: ");
+	        int rotations = scan.nextInt();
+
+	        rotateArrayByOne(arr, rotations);
+
+	        System.out.print("Rotated array: ");
+	        for (int i = 0; i < n; i++) {
+	            System.out.print(arr[i] + " ");
+	        }
+
+	        scan.close();
+	    }
+
+	    private static void rotateArrayByOne(int[] arr, int rotations) {
+	        int n = arr.length;
+	        rotations = rotations % n; 
+
+	        reverseArray(arr, 0, n - rotations - 1);
+	        
+	        reverseArray(arr, n - rotations, n - 1);
+
+	        reverseArray(arr, 0, n - 1);
+	    }
+
+	    private static void reverseArray(int[] arr, int start, int end) {
+	        while (start < end) {
+	            int temp = arr[start];
+	            arr[start] = arr[end];
+	            arr[end] = temp;
+
+	            start++;
+	            end--;
+	        }
+	    }
+}
