@@ -1,0 +1,35 @@
+package validIPv4Address;
+import java.util.Scanner;
+public class validIPv4Address {
+	 static int isValid(String s) {
+	        String[] parts = s.split("\\.");
+
+	        if (parts.length != 4)
+	            return 0;
+
+	        for (String part : parts) {
+	            if (part.isEmpty() || (part.length() > 1 && part.charAt(0) == '0'))
+	                return 0;
+
+	            try {
+	                int num = Integer.parseInt(part);
+	                if (num < 0 || num > 255)
+	                    return 0;
+	            } catch (NumberFormatException e) {
+	                return 0;
+	            }
+	        }
+
+	        return 1;
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scan = new Scanner(System.in);
+	        System.out.print("Enter the IPv4 address: ");
+	        String address = scan.nextLine();
+
+	        int result = isValid(address);
+	        System.out.println("Output: " + result);
+	        scan.close();
+	    }
+}
