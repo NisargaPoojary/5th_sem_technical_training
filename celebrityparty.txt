@@ -1,0 +1,40 @@
+package celebrityparty;
+import java.util.Scanner;
+public class celebrityparty {
+	 static int celebrity(int[][] M, int n) {
+	        int candidate = 0;
+	        for (int i = 1; i < n; i++) {
+	            if (knows(candidate, i, M)) {
+	                candidate = i;
+	            }
+	        }
+
+	        for (int i = 0; i < n; i++) {
+	            if (i != candidate && (knows(candidate, i, M) || !knows(i, candidate, M))) {
+	                return -1;
+	            }
+	        }
+
+	        return candidate;
+	    }
+
+	    static boolean knows(int a, int b, int[][] M) {
+	        return M[a][b] == 1;
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.print("Enter the size of the party (N): ");
+	        int n = scanner.nextInt();
+	        int[][] M = new int[n][n];
+	        System.out.println("Enter the matrix representing people at the party:");
+	        for (int i = 0; i < n; i++) {
+	            for (int j = 0; j < n; j++) {
+	                M[i][j] = scanner.nextInt();
+	            }
+	        }
+	        int celebrityIndex = celebrity(M, n);
+	        System.out.println("Celebrity is at index: " + celebrityIndex);
+	    }
+	   
+}
